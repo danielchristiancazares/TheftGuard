@@ -14,6 +14,9 @@ object SkurtTheftGuard {
     val system = ActorSystem("SkurtTheftSystem")
     val dispatcher = system.actorOf(Props(classOf[Dispatcher]), "dispatcher")
 
-    dispatcher ! StartPolling
+    while(true) {
+      dispatcher ! StartPolling
+      Thread.sleep(60000)
+    }
   }
 }
